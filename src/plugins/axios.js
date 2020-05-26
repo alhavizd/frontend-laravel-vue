@@ -5,7 +5,7 @@ import axios from 'axios'
 import { getToken, removeToken } from '@/utils/auth'
 // import { store } from '@/store/index'
 
-axios.defaults.baseURL = process.env.VUE_APP_API_URL
+axios.defaults.baseURL = process.env.VUE_APP_API_URL + '/id'
 axios.defaults.headers.common['Authorization'] = ''
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 

@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { store } from '@/store/index'
 
 Vue.use(VueRouter)
 
 const Layout = () => import('./views/layouts/Layout').then(m => m.default || m)
 const Login = () => import('./views/auth/Login').then(m => m.default || m)
 const SignUp = () => import('./views/auth/SignUp').then(m => m.default || m)
+const Admin = () => import('./views/layouts/Admin').then(m => m.default || m)
+const Dashboard = () => import('./views/dashboard/Index').then(m => m.default || m)
 
 const routes = [
   {
@@ -15,7 +18,16 @@ const routes = [
     redirect: { name: 'login' },
     children: [
       { path: '/login', name: 'login', component: Login },
-      { path: '/signup', name: 'signup', component: SignUp }
+      { path: '/signup', name: 'signup', component: SignUp },
+      {
+        path: '/admin',
+        name: 'admin',
+        component: Admin,
+        redirect: { name: 'dashboard' },
+        children: [
+          { path: 'dashboard', name: 'dashboard', component: Dashboard }
+        ]
+      }
     ]
   }
 ]
@@ -32,8 +44,8 @@ const router = new VueRouter({
 //
 // })
 
-// router.afterEach((to, from) => {
-//
-// })
+router.afterEach((to, from) => {
+  console.log(store.state.loading_page)
+})
 
 export default router
