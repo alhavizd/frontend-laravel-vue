@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div class="fill-height">
-      <!-- <Loading /> -->
+      <Loading />
       <transition name="fade" mode="out-in">
         <router-view />
       </transition>
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-// import Loading from '@/components/Loading'
+import Loading from '@/components/Loading'
 export default {
-  name: 'App'
-  // components: {
-  //   Loading
-  // }
+  name: 'App',
+  components: {
+    Loading
+  }
 }
 </script>

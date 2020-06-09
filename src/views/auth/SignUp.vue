@@ -31,7 +31,7 @@
                       @click:append="() => (visibility = !visibility)"
                     />
                     <div class="d-flex">
-                      <v-btn text color="primary" class="text-none px-2 __btn-login-text">
+                      <v-btn text color="primary" class="text-none px-2 __btn-login-text" @click="goToLogin()">
                         Login
                       </v-btn>
                       <v-spacer />
@@ -76,6 +76,9 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    goToLogin() {
+      this.$router.push({ name: 'login' })
     }
   }
 }

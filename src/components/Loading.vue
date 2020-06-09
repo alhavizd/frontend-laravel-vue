@@ -1,15 +1,14 @@
 <template lang="html">
-  <div class="">
+  <div v-if="getLoadingPageState" class="loading-page">
     <v-progress-circular :size="50" color="primary" indeterminate />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  data() {
-    return {
-      loading: true
-    }
+  computed: {
+    ...mapGetters(['getLoadingPageState'])
   }
 }
 </script>

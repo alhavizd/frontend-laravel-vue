@@ -40,12 +40,13 @@ const router = new VueRouter({
   }
 })
 
-// router.beforeEach(async(to, from, next) => {
-//
-// })
+router.beforeEach(async(to, from, next) => {
+  store.state.loading_page = true
+  next()
+})
 
 router.afterEach((to, from) => {
-  console.log(store.state.loading_page)
+  setTimeout(function() { store.state.loading_page = false }, 1000)
 })
 
 export default router
